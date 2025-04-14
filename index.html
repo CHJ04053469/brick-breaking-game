@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동물 벽돌깨기 게임</title>
+    <style>
+        * { padding: 0; margin: 0; }
+        body {
+            background: #222;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        canvas { 
+            background: #111;
+            margin-top: 20px;
+            border: 2px solid #444;
+        }
+        #gameInfo {
+            color: white;
+            margin: 10px;
+            font-size: 18px;
+            display: flex;
+            gap: 20px;
+        }
+        #startScreen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+        }
+        #startButton {
+            padding: 15px 30px;
+            font-size: 20px;
+            background: #0095DD;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        #startButton:hover {
+            background: #0077aa;
+        }
+        #countdown {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            color: white;
+            display: none;
+        }
+        #soundControl {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #soundControl:hover {
+            background: #444;
+        }
+        #currentAnimal {
+            color: white;
+            font-size: 24px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameInfo">
+        <span>점수: <span id="score">0</span></span>
+        <span>최고점수: <span id="highScore">0</span></span>
+        <span>시간: <span id="timer">0:00</span></span>
+        <span id="levelInfo">레벨 1</span>
+    </div>
+    <div id="currentAnimal">고양이</div>
+    <canvas id="gameCanvas" width="600" height="800"></canvas>
+    <div id="startScreen">
+        <h1>동물 벽돌깨기 게임</h1>
+        <button id="startButton">게임 시작</button>
+    </div>
+    <div id="countdown">3</div>
+    <button id="soundControl">🔊 소리 켜기</button>
+
+    <audio id="hitSound" src="data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU..." preload="auto"></audio>
+    <audio id="powerupSound" src="data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU..." preload="auto"></audio>
+    <audio id="brickSound" src="data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU..." preload="auto"></audio>
+
+    <script src="game.js"></script>
+</body>
+</html>
